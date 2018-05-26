@@ -1,0 +1,19 @@
+{
+  "name": "Veri",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Gerencie seus créditos.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "poi build src/index.js",
+    "start": "poi src/index.js"
+  },
+  "devDependencies": {
+    "poi": "^10.1.10",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "dependencies": {
+    "vue": "^2.5.16"
+  }
+}

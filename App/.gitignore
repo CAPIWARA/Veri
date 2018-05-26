@@ -1,0 +1,5 @@
+# Módulos do Node.js
+node_modules/
+
+# Arquivos de distribuição.
+dist/

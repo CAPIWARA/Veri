@@ -1,3 +1,3 @@
 <template>
-  <h1>Veri</h1>
+  <router-view />
 </template>

@@ -2,7 +2,6 @@ package resolvers
 
 import (
 	"Veri/Server/eth"
-	"fmt"
 	"math/big"
 	"time"
 
@@ -31,16 +30,18 @@ func GetContract(params graphql.ResolveParams) (interface{}, error) {
 func CreateTrajectory(params graphql.ResolveParams) (interface{}, error) {
 	uuid := params.Args["uuid"].(string)
 	trajeto := params.Args["trajeto"].(string)
+	km := big.NewInt(3)
+	pontos := big.NewInt(3)
 	var res Contract
 	res = Contract{
 		UUID:    uuid,
 		Trajeto: trajeto,
+		Km:      int.new(km),
+		Pontos:  pontos,
 	}
 
-	eth.Contract.RegistryTrajectory(eth.Auth, big.NewInt(2), trajeto, uuid, big.NewInt(3))
+	eth.Contract.RegistryTrajectory(eth.Auth, pontos, trajeto, uuid, km)
 	eth.Sim.Commit()
 
-	size, _ := eth.Contract.ConsultByUuid(nil, uuid)
-	fmt.Println("tamanho do contrato:", fmt.Sprintf("%s", size))
 	return res, nil
 }

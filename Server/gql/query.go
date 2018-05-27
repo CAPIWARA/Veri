@@ -1,7 +1,7 @@
 package gql
 
 import (
-	"hack-bike/gql/fields"
+	"Veri/Server/gql/fields"
 
 	"github.com/graphql-go/graphql"
 )

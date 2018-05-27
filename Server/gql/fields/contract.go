@@ -24,10 +24,10 @@ var CreateTrajectory = &graphql.Field{
 	Type:        types.Contract,
 	Description: "create contract",
 	Args: graphql.FieldConfigArgument{
-		"text": &graphql.ArgumentConfig{
+		"uuid": &graphql.ArgumentConfig{
 			Type: graphql.NewNonNull(graphql.String),
 		},
-		"email": &graphql.ArgumentConfig{
+		"trajeto": &graphql.ArgumentConfig{
 			Type: graphql.NewNonNull(graphql.String),
 		},
 	},

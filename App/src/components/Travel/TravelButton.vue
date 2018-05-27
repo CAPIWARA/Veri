@@ -1,6 +1,20 @@
 <template>
-  <fluffy-button type="button" :disabled="isLoading" @click="click()">
-    {{ text }}
+  <fluffy-button type="button" :isLoading="isLoading" @click="click()">
+    <img
+      v-if="isPlaying"
+      class="image"
+      slot="icon"
+      src="~@/assets/icons/Pause.png"
+      alt="Parar"
+    />
+    <img
+      v-else
+      class="image"
+      slot="icon"
+      src="~@/assets/icons/Play.png"
+      alt="Iniciar"
+    />
+    {{ isPlaying ? null : 'GO' }}
   </fluffy-button>
 </template>
 
@@ -12,14 +26,6 @@
     props: {
       isLoading: Boolean,
       isPlaying: Boolean,
-    },
-    computed: {
-      text () {
-        const text = this.isLoading ? 'Carregando'
-                   : this.isPlaying ? 'Parar'
-                                    : 'Começar';
-        return text;
-      },
     },
     methods: {
       click () {

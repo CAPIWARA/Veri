@@ -1,17 +1,17 @@
 <template>
   <section class="travel-screen">
-    <travel-map
-      v-if="isPlaying"
-      :end="end"
-      :path="path"
-      :begin="begin"
-    />
-
     <travel-button
       :isLoading="isLoading"
       :isPlaying="isPlaying"
       @stop="stop()"
       @start="start()"
+    />
+
+    <travel-map
+      v-if="isPlaying"
+      :end="end"
+      :path="path"
+      :begin="begin"
     />
   </section>
 </template>
@@ -46,3 +46,12 @@
   }
 </script>
 
+<style>
+  .travel-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+</style>

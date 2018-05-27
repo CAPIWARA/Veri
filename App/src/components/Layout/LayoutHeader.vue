@@ -19,10 +19,13 @@
   }
 
   .layout-header > .title {
+    min-width: 100%;
     color: #ffffff;
     margin-left: calc(50% - (12px + 16px));
     font-size: 20pt;
     font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
     transform: translateX(-50%);
   }
 </style>

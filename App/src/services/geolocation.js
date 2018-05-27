@@ -1,5 +1,5 @@
 import sleep from '@/helpers/sleep';
-import calcDistance from 'geo-dist-calc';
+import { discal as distance } from 'geo-dist-calc';
 
 const SECOND = 1000;
 
@@ -32,9 +32,18 @@ function unwatch (watcher) {
 }
 
 function distances (coordinates) {
-  const reducer = (total, A, B) => total + calcDistance(A, B);
-  const distance = coordinates.reduce(reducer, 0);
-  return distance;
+  let total = 0;
+
+  coordinates.reduce((A, B) => {
+    if (A && B) {
+      const { kilometers = 0 } = distance(A, B);
+      total += kilometers;
+      return A;
+    }
+    return A;
+  });
+
+  return total;
 }
 
 export { get, initialize, watch, unwatch, distances, distance };

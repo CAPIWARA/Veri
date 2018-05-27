@@ -2,6 +2,8 @@
   <section class="travel-screen">
     <travel-stats
       :begin="begin"
+      :isPlaying="isPlaying"
+      :coordinates="coordinates"
     />
 
     <travel-button
@@ -53,10 +55,10 @@
 
 <style>
   .travel-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 </style>

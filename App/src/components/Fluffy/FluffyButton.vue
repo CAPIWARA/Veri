@@ -76,13 +76,17 @@
   .fluffy-button.-is-large {
     width: 222px;
     height: 222px;
+    min-width: 222px;
+    max-width: 222px;
+    min-height: 222px;
+    max-height: 222px;
   }
   .fluffy-button.-is-large > .text {
     font-size: 53pt;
   }
 
   .fluffy-button.-is-loading {
-
+    animation: none;
   }
 
   @keyframes pulse {

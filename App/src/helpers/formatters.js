@@ -12,4 +12,14 @@ function toTime (time) {
   return `${HH}:${MM}:${SS}`;
 }
 
-export { toTime };
+function toDistance (distance) {
+  return (+distance).toFixed(2);
+}
+
+function toCoins (coins) {
+  return ~~coins;
+}
+
+export { toTime, toDistance, toCoins };
+
+

@@ -1,5 +1,9 @@
 <template>
   <section class="travel-screen">
+    <travel-stats
+      :begin="begin"
+    />
+
     <travel-button
       :isLoading="isLoading"
       :isPlaying="isPlaying"
@@ -19,10 +23,11 @@
 <script>
   import { toPath } from '@/services/travel';
   import TravelMap from '@/components/Travel/TravelMap';
+  import TravelStats from '@/components/Travel/TravelStats';
   import TravelButton from '@/components/Travel/TravelButton';
 
   export default {
-    components: { TravelMap, TravelButton },
+    components: { TravelMap, TravelStats, TravelButton },
     props: {
       isLoading:   Boolean,
       isPlaying:   Boolean,

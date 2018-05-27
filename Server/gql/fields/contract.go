@@ -12,7 +12,7 @@ var ContractQuery = &graphql.Field{
 	Type:        types.Contract,
 	Description: "get contract by text",
 	Args: graphql.FieldConfigArgument{
-		"text": &graphql.ArgumentConfig{
+		"uuid": &graphql.ArgumentConfig{
 			Type: graphql.NewNonNull(graphql.String),
 		},
 	},

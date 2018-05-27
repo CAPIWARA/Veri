@@ -6,12 +6,16 @@ import "github.com/graphql-go/graphql"
 var Contract = graphql.NewObject(graphql.ObjectConfig{
 	Name: "contract",
 	Fields: graphql.Fields{
-		"text": &graphql.Field{
+		"uuid": &graphql.Field{
 			Type:        graphql.String,
 			Description: "contract text",
 		},
-		"email": &graphql.Field{
+		"balance": &graphql.Field{
 			Type:        graphql.String,
-			Description: "contract email",
+			Description: "contract balance",
+		},
+		"trajectory": &graphql.Field{
+			Type:        graphql.String,
+			Description: "contract trajectory",
 		},
 	}})

@@ -52,11 +52,10 @@ contract DocumentRegister {
         _documents[_uuid] = doc;
     }
 
-    function consultByUuid(string _uuid) public view returns (uint256[]) {
+    function consultByUuid(string _uuid) public view returns (uint256 balance, uint256[] trajectory) {
         Document memory doc = _documents[_uuid];
-        return doc.trajectory;
+        return (doc.balance, doc.trajectory);
     }
-
 }
 
 

@@ -1,10 +1,8 @@
 <template>
   <div>
     <p>Habilitar a API de geolocalização.</p>
-    <h5
-      v-for="position in positions"
-      :key="position.time"
-    >{{ JSON.stringify(position.coords) }}</h5>
+
+    <trip-map :positions="positions" />
 
     <button v-if="isLoading && !isStarted" @click="start()">Iniciar</button>
 
@@ -13,9 +11,14 @@
 </template>
 
 <script>
+  import TripMap from '@/components/TripMap';
+  import { getGeolocation } from '@/services/geolocation';
+
   export default {
+    components: { TripMap },
     data () {
       return {
+        start: null,
         watcher: null,
         positions: [],
         isStarted: false,
@@ -45,12 +48,8 @@
       start () {
         const geolocation = window.navigator.geolocation;
         this.isStarted = true;
-        this.watcher = setInterval(() =>
-          geolocation.getCurrentPosition(
-            this.update,
-            (error) => console.dir(error),
-            { enableHighAccuracy: true }
-          ),
+        this.watcher = setInterval(
+          () => getGeolocation().then(this.update),
           1000 * 10
         );
       },

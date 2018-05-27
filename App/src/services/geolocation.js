@@ -1,10 +1,11 @@
 import sleep from '@/helpers/sleep';
+import calcDistance from 'geo-dist-calc';
 
 const SECOND = 1000;
 
 function get () {
   return new Promise((resolve) => {
-    window.navigator.geolocation.getCurrentPosition((position) => resolve({
+    navigator.geolocation.getCurrentPosition((position) => resolve({
       time: position.timestamp,
       altitude: position.coords.altitude,
       latitude: position.coords.latitude,
@@ -15,23 +16,25 @@ function get () {
 
 async function initialize () {
   await sleep(5 * SECOND);
-  const answer = await window.navigator.permissions.query({
+  const { state } = await navigator.permissions.query({
     name: 'geolocation'
   });
-  return get();
+  return (state === 'granted');
 }
 
 function watch (fn, time = 8 * SECOND) {
-  const watcher = window.setInterval(() => get().then(function () {
-    if (!watcher)
-      return;
-    fn(...arguments);
-  }), time);
+  const watcher = setInterval(() => get().then((...params) => watcher && fn(...params)), time);
   return watcher;
 }
 
 function unwatch (watcher) {
-  window.clearInterval(watcher);
+  clearInterval(watcher);
 }
 
-export { get, initialize, watch, unwatch };
+function distances (coordinates) {
+  const reducer = (total, A, B) => total + calcDistance(A, B);
+  const distance = coordinates.reduce(reducer, 0);
+  return distance;
+}
+
+export { get, initialize, watch, unwatch, distances, distance };

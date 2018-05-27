@@ -5,7 +5,8 @@
 </template>
 
 <script>
-  import FluffyCard from '@/Fluffy/FluffyCard';
+  import { toPath } from '@/services/travel';
+  import FluffyCard from '@/components/Fluffy/FluffyCard';
 
   export default {
     components: { FluffyCard },
@@ -27,21 +28,22 @@
           return;
         const current = path[path.length - 1];
         this.line.setPath(path);
-        this.map.setCenter(current);
+        this.map.panTo(current);
       }
     },
     mounted () {
       this.map = new google.maps.Map(this.$refs.map, {
-        zoom: 14,
-        center: this.begin,
+        zoom: 18,
+        center: toPath(this.begin),
+        disableDefaultUI: true
       });
 
       this.line = new google.maps.Polyline({
         path: this.path,
         geodesic: true,
         strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
+        strokeWeight: 6,
+        strokeOpacity: 1.0
       });
 
       this.layer = new google.maps.BicyclingLayer();

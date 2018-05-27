@@ -8,7 +8,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      component: () => import('@/containers/TrackContainer'),
+      component: () => import('@/containers/TravelContainer'),
     }
   ]
 });

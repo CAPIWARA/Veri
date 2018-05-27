@@ -3,3 +3,9 @@
     <slot />
   </div>
 </template>
+
+<style>
+  .fluffy-card {
+
+  }
+</style>

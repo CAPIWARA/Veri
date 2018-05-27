@@ -8,6 +8,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'Minha corrida',
       component: () => import('@/containers/TravelContainer'),
     }
   ]
